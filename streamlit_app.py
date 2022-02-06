@@ -3,6 +3,8 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
+
 
 """
 # Welcome to Streamlit!
@@ -36,3 +38,16 @@ with st.echo(code_location='below'):
     st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
         .mark_circle(color='#0068c9', opacity=0.5)
         .encode(x='x:Q', y='y:Q'))
+    
+    html_string = '''
+    <h1>HTML string in RED</h1>
+
+    <script language="javascript">
+      document.querySelector("h1").style.color = "red";
+      console.log("Streamlit runs JavaScript");
+      alert("Streamlit runs JavaScript");
+    </script>
+    '''
+
+    components.html(html_string)  # JavaScript works
+    
