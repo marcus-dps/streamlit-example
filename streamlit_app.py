@@ -42,10 +42,18 @@ with st.echo(code_location='below'):
     html_string = '''
     <h1>HTML string in RED</h1>
 
-    <script language="javascript">
-      document.querySelector("h1").style.color = "red";
+    <script language="javascript">      
       console.log("Streamlit runs JavaScript");
-      alert("Streamlit runs JavaScript");
+      let btn = document.createElement("button");
+      btn.innerHTML = "Next";
+      btn.addEventListener("click", function () {
+        if(parent) {
+          parent.postMessage("next","*");
+        } else {
+          window.alert("Load this page as an iframe");
+        }
+      });
+      document.body.appendChild(btn);      
     </script>
     '''
 
