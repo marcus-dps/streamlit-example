@@ -47,8 +47,9 @@ with st.echo(code_location='below'):
       let btn = document.createElement("button");
       btn.innerHTML = "Next";
       btn.addEventListener("click", function () {
-        if(parent) {
-          parent.postMessage("next","*");
+        console.log("Handling click", window.parent);
+        if(window.parent) {
+          window.parent.postMessage("next","*");
         } else {
           window.alert("Load this page as an iframe");
         }
